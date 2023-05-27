@@ -3,6 +3,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.95.2-green)
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0.14-red)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.3-blue)
+![PyTest](https://img.shields.io/badge/PyTest-7.3.1-blue)
 
 ### Описание проекта:
 API для получения вопросов с ответами, которые можно использовать, например, в викторине.
@@ -10,7 +11,7 @@ API для получения вопросов с ответами, которы
 ### План развития проекта:
 
 ```bash
-- Добавить тесты
+- Добавить БД для тестов
 - Добавить логгирование
 - Добавить контейнеризацию Docker
 ```
@@ -52,7 +53,7 @@ alembic upgrade head
 uvicorn main:app --reload
 ```
 
-## Проект доступен по адресу:
+### Проект доступен по адресу:
 
 ```bash
 http://127.0.0.1:8000/
@@ -133,10 +134,20 @@ POST http://127.0.0.1:8000/
 }
 ```
 
-## Документация к API доступна после запуска проекта по адресам:
+### Документация к API доступна после запуска проекта по адресам:
 
+```
 http://127.0.0.1:8000/docs
+```
+```
 http://127.0.0.1:8000/redoc
+```
+
+### Запуск тестов(PyTest):
+
+```bash
+pytest -v -s
+```
 
 
 Автор: [Семен Ванюшин](https://github.com/semenvanyushin)

@@ -1,8 +1,8 @@
-"""Column answer type str
+"""Create question table
 
-Revision ID: 0e34646aef9f
-Revises: 5bc692e58653
-Create Date: 2023-05-24 15:49:51.636029
+Revision ID: ae634a465c29
+Revises: 
+Create Date: 2023-05-27 13:05:08.925214
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '0e34646aef9f'
-down_revision = '5bc692e58653'
+revision = 'ae634a465c29'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -28,7 +28,7 @@ def downgrade() -> None:
     op.create_table('question',
     sa.Column('id', sa.INTEGER(), autoincrement=True, nullable=False),
     sa.Column('question', sa.VARCHAR(), autoincrement=False, nullable=False),
-    sa.Column('answer', sa.TEXT(), autoincrement=False, nullable=False),
+    sa.Column('answer', sa.VARCHAR(), autoincrement=False, nullable=False),
     sa.Column('created_at', postgresql.TIMESTAMP(), autoincrement=False, nullable=False),
     sa.PrimaryKeyConstraint('id', name='question_pkey')
     )
