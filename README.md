@@ -4,6 +4,8 @@
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0.14-red)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.3-blue)
 ![PyTest](https://img.shields.io/badge/PyTest-7.3.1-blue)
+![Docker](https://img.shields.io/badge/Docker-20.10.22-blue)
+![Gunicorn](https://img.shields.io/badge/Gunicorn-20.1.0-br)
 
 ### Описание проекта:
 API для получения вопросов с ответами, которые можно использовать, например, в викторине.
@@ -13,10 +15,32 @@ API для получения вопросов с ответами, которы
 ```bash
 - Добавить БД для тестов
 - Добавить логгирование
-- Добавить контейнеризацию Docker
+```
+
+### Запуск проекта:
+
+Создайте в корне проекта файл с именем '.env_non_dev' и заполните его данными:
+```
+POSTGRES_SERVER=db:5432     # хост и порт базы данных в формате HOST_DB:PORT_DB
+POSTGRES_USER=postgres      # имя пользователя базы данных
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=postgres        # название базы данных
+```
+
+Создание и запуск контейнеров выполняется командой:
+```bash
+docker-compose up -d --build
 ```
 
 ### Запуск в режиме разработчика:
+
+Создайте в корне проекта файл с именем '.env' и заполните его данными:
+```
+POSTGRES_SERVER=localhost:5432  # хост и порт базы данных в формате HOST_DB:PORT_DB
+POSTGRES_USER=postgres          # имя пользователя базы данных
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=postgres            # название базы данных
+```
 
 Создание и активация виртуального окружения:
 ```bash

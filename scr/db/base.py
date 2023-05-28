@@ -1,9 +1,12 @@
 from typing import Any
 
-from sqlalchemy.ext.declarative import as_declarative, declared_attr
+from sqlalchemy.ext.declarative import declared_attr
+from sqlalchemy.orm import registry
+
+mapper_registry = registry()
 
 
-@as_declarative()
+@mapper_registry.as_declarative_base()
 class Base:
     id: Any
     __name__: str

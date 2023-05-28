@@ -10,28 +10,30 @@ services:
     ports:
       - '5435:5432'
     env_file:
-      - .env
+      - .env_non_dev
     networks:
-      - bewise
+      - castom
 
   backend:
     container_name: quiz_app
-    image: quiz_backend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
-    command: sh -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    command: sh -c "alembic upgrade head && gunicorn main:app --workers 1 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000"
     depends_on:
       - db
     ports:
       - '8000:8000'
     env_file:
-      - .env
+      - .env_non_dev
     networks:
-      - bewise
+      - castom
 
 
 volumes:
   postgres_data:
 
 networks:
-  bewise:
+  castom:
     driver: bridge
