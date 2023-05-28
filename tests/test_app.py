@@ -1,10 +1,5 @@
-from fastapi.testclient import TestClient
-
-from scr.app.app import app
 from tests.utils import check_endpoint
-
-
-client = TestClient(app)
+from tests.testconf import client
 
 
 def test_post_index() -> None:
